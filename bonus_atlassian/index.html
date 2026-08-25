@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Widget Store: Order</title>
+
+  <!-- Atlassian Design System: CSS Reset + Reduced UI Pack -->
+  <link rel="stylesheet" href="https://unpkg.com/@atlaskit/css-reset@latest" />
+  <link rel="stylesheet" href="https://unpkg.com/@atlaskit/reduced-ui-pack@latest" />
+
+  <!-- Atlassian uses Charlie Display + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Atlassian Design Tokens (light & dark) ───────────────────────── */
+    :root,
+    [data-color-mode="light"] {
+      --ds-background-primary:    #FFFFFF;
+      --ds-background-secondary:  #F7F8F9;
+      --ds-background-card:       #FFFFFF;
+      --ds-surface-raised:        #FFFFFF;
+      --ds-surface-overlay:       #FFFFFF;
+      --ds-border:                #091E4224;
+      --ds-border-focused:        #388BFF;
+      --ds-text:                  #172B4D;
+      --ds-text-subtle:           #44546F;
+      --ds-text-disabled:         #8590A2;
+      --ds-link:                  #0C66E4;
+      --ds-link-pressed:          #0055CC;
+      --ds-brand-bold:            #0C66E4;
+      --ds-brand-bold-hovered:    #0055CC;
+      --ds-brand-bold-pressed:    #003884;
+      --ds-success-bold:          #22A06B;
+      --ds-shadow-raised:         0 1px 1px #091E4240, 0 0 1px 1px #091E421F;
+      --ds-shadow-overlay:        0 8px 12px #091E4226, 0 0 1px #091E424F;
+      --ds-nav-bg:                #0C66E4;
+      --ds-nav-text:              #FFFFFF;
+      --ds-nav-text-subtle:       rgba(255,255,255,0.7);
+      --ds-nav-hover:             rgba(255,255,255,0.15);
+      --ds-nav-active:            rgba(255,255,255,0.25);
+      --ds-tag-bg:                #E9F2FF;
+      --ds-tag-text:              #0C66E4;
+    }
+
+    [data-color-mode="dark"] {
+      --ds-background-primary:    #1D2125;
+      --ds-background-secondary:  #161A1D;
+      --ds-background-card:       #22272B;
+      --ds-surface-raised:        #22272B;
+      --ds-surface-overlay:       #282E33;
+      --ds-border:                #A6C5E229;
+      --ds-border-focused:        #388BFF;
+      --ds-text:                  #C7D1DB;
+      --ds-text-subtle:           #8C9BAB;
+      --ds-text-disabled:         #626F86;
+      --ds-link:                  #579DFF;
+      --ds-link-pressed:          #85B8FF;
+      --ds-brand-bold:            #579DFF;
+      --ds-brand-bold-hovered:    #85B8FF;
+      --ds-brand-bold-pressed:    #CCE0FF;
+      --ds-success-bold:          #4BCE97;
+      --ds-shadow-raised:         0 1px 1px #03040480, 0 0 1px 1px #03040466;
+      --ds-shadow-overlay:        0 8px 12px #03040480, 0 0 1px #0304047A;
+      --ds-nav-bg:                #1C2B41;
+      --ds-nav-text:              #C7D1DB;
+      --ds-nav-text-subtle:       rgba(199,209,219,0.7);
+      --ds-nav-hover:             rgba(166,197,226,0.12);
+      --ds-nav-active:            rgba(166,197,226,0.2);
+      --ds-tag-bg:                #1C2B41;
+      --ds-tag-text:              #579DFF;
+    }
+
+    /* ── Base ─────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      background: var(--ds-background-secondary);
+      color: var(--ds-text);
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    /* ── Top Nav (Atlassian-style horizontal nav) ──────────────────────── */
+    .atl-nav {
+      background: var(--ds-nav-bg);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      box-shadow: var(--ds-shadow-raised);
+    }
+    .atl-nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--ds-nav-text);
+      font-weight: 700;
+      font-size: 16px;
+      text-decoration: none;
+      margin-right: 8px;
+    }
+    .atl-nav-logo svg { flex-shrink: 0; }
+    .atl-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      flex: 1;
+    }
+    .atl-nav-link {
+      color: var(--ds-nav-text-subtle);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .atl-nav-link:hover { background: var(--ds-nav-hover); color: var(--ds-nav-text); }
+    .atl-nav-link.active { background: var(--ds-nav-active); color: var(--ds-nav-text); }
+    .atl-nav-right { display: flex; align-items: center; gap: 8px; }
+
+    /* Icon button */
+    .atl-icon-btn {
+      background: transparent;
+      border: none;
+      color: var(--ds-nav-text);
+      cursor: pointer;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s;
+      font-size: 18px;
+    }
+    .atl-icon-btn:hover { background: var(--ds-nav-hover); }
+
+    /* ── Page layout ──────────────────────────────────────────────────── */
+    #content {
+      margin-top: 56px;
+      padding: 24px 20px 40px;
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Page heading ─────────────────────────────────────────────────── */
+    .page-header {
+      margin-bottom: 20px;
+    }
+    .page-header h1 {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--ds-text);
+      margin: 0 0 4px;
+    }
+    .page-header p {
+      color: var(--ds-text-subtle);
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* ── Product grid ─────────────────────────────────────────────────── */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    /* ── Atlassian Card ───────────────────────────────────────────────── */
+    .atl-card {
+      background: var(--ds-background-card);
+      border: 1px solid var(--ds-border);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: var(--ds-shadow-raised);
+      transition: box-shadow 0.2s, transform 0.15s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .atl-card:hover {
+      box-shadow: var(--ds-shadow-overlay);
+      transform: translateY(-2px);
+    }
+
+    /* Product image */
+    .product-img-wrap {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 4px;
+      overflow: hidden;
+      background: var(--ds-background-secondary);
+    }
+    .product-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Product title */
+    .atl-card h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ds-text);
+      margin: 0;
+    }
+
+    /* Price + rating */
+    .price-rating {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+    }
+    .price {
+      font-weight: 600;
+      color: var(--ds-text);
+      font-size: 15px;
+    }
+    .rating {
+      background: var(--ds-tag-bg);
+      color: var(--ds-tag-text);
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+    /* Atlassian form label */
+    .atl-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ds-text-subtle);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Atlassian select */
+    .atl-select {
+      width: 100%;
+      padding: 6px 28px 6px 10px;
+      font-size: 14px;
+      font-family: inherit;
+      border: 2px solid var(--ds-border);
+      border-radius: 3px;
+      background: var(--ds-background-card);
+      color: var(--ds-text);
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%2344546F' d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .atl-select:focus {
+      outline: none;
+      border-color: var(--ds-border-focused);
+      box-shadow: 0 0 0 2px rgba(56,139,255,0.2);
+    }
+
+    .field-row { display: flex; flex-direction: column; gap: 4px; }
+
+    /* ── Atlassian Button ─────────────────────────────────────────────── */
+    .atl-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s, box-shadow 0.15s;
+      text-decoration: none;
+    }
+    .atl-btn-primary {
+      background: var(--ds-brand-bold);
+      color: #FFFFFF;
+    }
+    .atl-btn-primary:hover { background: var(--ds-brand-bold-hovered); }
+    .atl-btn-primary:active { background: var(--ds-brand-bold-pressed); }
+
+    .atl-btn-subtle {
+      background: transparent;
+      color: var(--ds-link);
+      border: 1px solid var(--ds-border);
+    }
+    .atl-btn-subtle:hover { background: var(--ds-background-secondary); }
+
+    /* ── Checkout row ─────────────────────────────────────────────────── */
+    .checkout-row {
+      display: flex;
+      justify-content: flex-end;
+      padding: 16px 0;
+    }
+    .checkout-row .atl-btn {
+      padding: 10px 24px;
+      font-size: 15px;
+    }
+
+    /* ── Footer ───────────────────────────────────────────────────────── */
+    footer {
+      margin-top: 40px;
+      padding: 16px 0 8px;
+      border-top: 1px solid var(--ds-border);
+      color: var(--ds-text-subtle);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    footer a { color: var(--ds-link); }
+
+    /* ── Bottom nav bar ───────────────────────────────────────────────── */
+    .atl-bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--ds-surface-raised);
+      border-top: 1px solid var(--ds-border);
+      display: flex;
+      z-index: 100;
+    }
+    .atl-bottom-nav-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 4px;
+      text-decoration: none;
+      color: var(--ds-text-subtle);
+      font-size: 11px;
+      font-weight: 500;
+      gap: 3px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .atl-bottom-nav-item:hover { color: var(--ds-brand-bold); background: var(--ds-background-secondary); }
+    .atl-bottom-nav-item.active { color: var(--ds-brand-bold); }
+    .atl-bottom-nav-item svg { width: 20px; height: 20px; }
+
+    /* ── Responsive ───────────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      .product-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      #content { padding: 16px 12px 80px; }
+    }
+    @media (max-width: 400px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top Navigation ── -->
+  <nav class="atl-nav">
+    <a class="atl-nav-logo" href="index.html">
+      <!-- Atlassian-style "A" wordmark -->
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8.56 13.87c-.24-.32-.68-.26-.9.08l-3.5 5.73A.67.67 0 0 0 4.73 21h6.02a.66.66 0 0 0 .59-.38c.75-1.63.52-3.83-1.78-6.75z" fill="white"/>
+        <path d="M11.67 3.28a14.93 14.93 0 0 0-.97 14.24l2.56 5.1c.12.24.37.38.63.38h6.02a.67.67 0 0 0 .57-1.02L12.6 3.27a.52.52 0 0 0-.93.01z" fill="white"/>
+      </svg>
+      My Widget Store
+    </a>
+    <div class="atl-nav-links">
+      <a class="atl-nav-link active" href="index.html">Store</a>
+      <a class="atl-nav-link" href="shipping.html">Shipping</a>
+      <a class="atl-nav-link" href="summary.html">Summary</a>
+    </div>
+    <div class="atl-nav-right">
+      <button class="atl-icon-btn" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+      <button class="atl-icon-btn" onclick="goToShipping()" aria-label="Shopping cart" title="Checkout">🛒</button>
+    </div>
+  </nav>
+
+  <!-- ── Main Content ── -->
+  <div id="content">
+    <div class="page-header">
+      <h1>Browse Products</h1>
+      <p>Select items and quantities, then proceed to checkout.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- Toy Boat -->
+      <div class="atl-card">
+        <div class="product-img-wrap">
+          <img src="images/toyboat.jpg" alt="Toy Boat" />
+        </div>
+        <h3>Toy Boat</h3>
+        <div class="price-rating">
+          <span class="price">$15.99</span>
+          <span class="rating">⭐ 4.6</span>
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="qty-boat">Quantity</label>
+          <select class="atl-select" id="qty-boat">
+            <option value="0">0</option>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="color-boat">Color</label>
+          <select class="atl-select" id="color-boat">
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Yellow</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Paper Plane -->
+      <div class="atl-card">
+        <div class="product-img-wrap">
+          <img src="images/paperplane.jpg" alt="Paper Plane" />
+        </div>
+        <h3>Paper Plane</h3>
+        <div class="price-rating">
+          <span class="price">$8.52</span>
+          <span class="rating">⭐ 3.8</span>
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="qty-plane">Quantity</label>
+          <select class="atl-select" id="qty-plane">
+            <option value="0">0</option>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="color-plane">Color</label>
+          <select class="atl-select" id="color-plane">
+            <option>White</option>
+            <option>Blue</option>
+            <option>Red</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Stuffed Animal -->
+      <div class="atl-card">
+        <div class="product-img-wrap">
+          <img src="images/stuffedanimal.jpg" alt="Stuffed Animal" />
+        </div>
+        <h3>Stuffed Animal</h3>
+        <div class="price-rating">
+          <span class="price">$9.13</span>
+          <span class="rating">⭐ 4.9</span>
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="qty-stuffed">Quantity</label>
+          <select class="atl-select" id="qty-stuffed">
+            <option value="0">0</option>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="color-stuffed">Color</label>
+          <select class="atl-select" id="color-stuffed">
+            <option>Brown</option>
+            <option>White</option>
+            <option>Gray</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Train Car -->
+      <div class="atl-card">
+        <div class="product-img-wrap">
+          <img src="images/traincar.jpg" alt="Train Car" />
+        </div>
+        <h3>Train Car</h3>
+        <div class="price-rating">
+          <span class="price">$25.00</span>
+          <span class="rating">⭐ 2.4</span>
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="qty-train">Quantity</label>
+          <select class="atl-select" id="qty-train">
+            <option value="0">0</option>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="color-train">Color</label>
+          <select class="atl-select" id="color-train">
+            <option>Red</option>
+            <option>Blue</option>
+            <option>Green</option>
+          </select>
+        </div>
+      </div>
+
+    </div><!-- end product-grid -->
+
+    <div class="checkout-row">
+      <button class="atl-btn atl-btn-primary" onclick="goToShipping()">
+        🛒 Check Out
+      </button>
+    </div>
+
+    <footer>
+      "Toy boat" by Jon Olav, "Cruelty to st­ animals?" by Fresh On The Net,
+      "Wooden toy train" by prague.czech.photo, and "JAL Paper Plane" by ayustety
+      are licensed under
+      <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.
+    </footer>
+  </div>
+
+  <!-- ── Bottom Nav ── -->
+  <nav class="atl-bottom-nav">
+    <a class="atl-bottom-nav-item active" href="index.html">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Store
+    </a>
+    <a class="atl-bottom-nav-item" href="shipping.html">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+      Shipping
+    </a>
+    <a class="atl-bottom-nav-item" href="summary.html">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+      Summary
+    </a>
+  </nav>
+
+  <script>
+    function goToShipping() {
+      const order = {
+        toyBoat:      { quantity: document.getElementById('qty-boat').value,    color: document.getElementById('color-boat').value,    price: 15.99 },
+        paperPlane:   { quantity: document.getElementById('qty-plane').value,   color: document.getElementById('color-plane').value,   price: 8.52  },
+        stuffedAnimal:{ quantity: document.getElementById('qty-stuffed').value, color: document.getElementById('color-stuffed').value, price: 9.13  },
+        trainCar:     { quantity: document.getElementById('qty-train').value,   color: document.getElementById('color-train').value,   price: 25.0  }
+      };
+      localStorage.setItem('order', JSON.stringify(order));
+      location.href = 'shipping.html';
+    }
+
+    /* ── Dark mode ── */
+    const html = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+
+    function applyTheme(isDark) {
+      html.setAttribute('data-color-mode', isDark ? 'dark' : 'light');
+      toggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('atl-theme', isDark ? 'dark' : 'light');
+    }
+
+    const saved = localStorage.getItem('atl-theme');
+    if (saved) {
+      applyTheme(saved === 'dark');
+    } else {
+      applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches);
+    }
+
+    toggle.addEventListener('click', () => {
+      applyTheme(html.getAttribute('data-color-mode') !== 'dark');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,284 @@
+INF133 Assignment 5 - Bonus Prompt Log (Atlassian Design System)
+Generated: 3/17/2026, 10:01:25 PM
+Total Prompts: 31
+
+================================================================================
+
+
+PROMPT #31
+Time: 3/17/2026, 10:01:13 PM
+Model: Claude Opus 4.1
+
+how would you compare atlassian design system vs material design in terms of ease of use and implementation with an llm?
+
+================================================================================
+
+
+PROMPT #30
+Time: 3/17/2026, 10:01:02 PM
+Model: Claude Opus 4.1
+
+can you summarize what i implemented using atlassian design system so i can include it in my reflection?
+
+================================================================================
+
+
+PROMPT #29
+Time: 3/17/2026, 10:00:57 PM
+Model: Claude Opus 4.1
+
+how do i organize my files and components for this atlassian version (since it uses react)?
+
+================================================================================
+
+
+PROMPT #28
+Time: 3/17/2026, 10:00:48 PM
+Model: Claude Opus 4.1
+
+what are some small polish tweaks to make this feel more professional and less like a student project?
+
+================================================================================
+
+
+PROMPT #27
+Time: 3/17/2026, 10:00:39 PM
+Model: Claude Opus 4.1
+
+how do i improve visual hierarchy using atlassian typography styles?
+
+================================================================================
+
+
+PROMPT #26
+Time: 3/17/2026, 10:00:31 PM
+Model: Claude Opus 4.1
+
+can you help me make the product list look more like a clean enterprise dashboard?
+
+================================================================================
+
+
+PROMPT #25
+Time: 3/17/2026, 10:00:19 PM
+Model: Claude Opus 4.1
+
+how do i handle buttons like "place order" so they match atlassian styling?
+
+================================================================================
+
+
+PROMPT #24
+Time: 3/17/2026, 10:00:10 PM
+Model: Claude Opus 4.1
+
+my components look inconsistent between pages, how do i standardize styling across the whole app?
+
+================================================================================
+
+
+PROMPT #23
+Time: 3/17/2026, 10:00:03 PM
+Model: Claude Opus 4.1
+
+what is the best way to toggle between light and dark mode in a react app?
+
+================================================================================
+
+
+PROMPT #22
+Time: 3/17/2026, 9:59:27 PM
+Model: Claude Opus 4.1
+
+how do i implement dark mode with atlassian design system?
+
+================================================================================
+
+
+PROMPT #21
+Time: 3/17/2026, 9:59:21 PM
+Model: Claude Opus 4.1
+
+how do i override default styles in atlaskit components safely?
+
+================================================================================
+
+
+PROMPT #20
+Time: 3/17/2026, 9:59:15 PM
+Model: Claude Opus 4.1
+
+can i create a custom green theme even though atlassian usually uses blue?
+
+================================================================================
+
+
+PROMPT #19
+Time: 3/17/2026, 9:55:22 PM
+Model: Claude Opus 4.1
+
+how do i customize colors while still keeping an atlassian-like design feel?
+
+================================================================================
+
+
+PROMPT #18
+Time: 3/16/2026, 11:43:16 PM
+Model: Claude Opus 4.1
+
+my layout looks kind of plain compared to jira, how can i make it feel more like atlassian products?
+
+================================================================================
+
+
+PROMPT #17
+Time: 3/16/2026, 11:43:02 PM
+Model: Claude Opus 4.1
+
+how do i make my layout responsive using atlassian or general css with this system?
+
+================================================================================
+
+
+PROMPT #16
+Time: 3/16/2026, 11:42:06 PM
+Model: Claude Opus 4.1
+
+what spacing system does atlassian use and how can i apply it consistently?
+
+================================================================================
+
+
+PROMPT #15
+Time: 3/16/2026, 11:41:55 PM
+Model: Claude Opus 4.1
+
+how do i handle spacing and layout so it matches atlassian design guidelines?
+
+================================================================================
+
+
+PROMPT #14
+Time: 3/16/2026, 11:41:20 PM
+Model: Claude Opus 4.1
+
+can you help me convert my summary page into an atlassian-style table or structured layout?
+
+================================================================================
+
+
+PROMPT #13
+Time: 3/16/2026, 11:40:48 PM
+Model: Claude Opus 4.1
+
+how do i implement radio buttons or selection for shipping options in atlaskit?
+
+================================================================================
+
+
+PROMPT #12
+Time: 3/16/2026, 11:40:34 PM
+Model: Claude Opus 4.1
+
+what components should i use for inputs like name, address, and shipping method?
+
+================================================================================
+
+
+PROMPT #11
+Time: 3/16/2026, 11:40:17 PM
+Model: Claude Opus 4.1
+
+how do i create a form for the shipping page using atlassian form components?
+
+================================================================================
+
+
+PROMPT #10
+Time: 3/16/2026, 11:40:05 PM
+Model: Claude Opus 4.1
+
+can you help me add a header/navigation bar with the title "widget factory" using atlassian styles?
+
+================================================================================
+
+
+PROMPT #9
+Time: 3/16/2026, 11:39:49 PM
+Model: Claude Opus 4.1
+
+what is the equivalent of a top app bar in atlassian design system?
+
+================================================================================
+
+
+PROMPT #8
+Time: 3/16/2026, 11:39:43 PM
+Model: Claude Opus 4.1
+
+how do i structure a page layout using atlassian design system principles?
+
+================================================================================
+
+
+PROMPT #7
+Time: 3/16/2026, 11:39:28 PM
+Model: Claude Opus 4.1
+
+can you help me recreate my product cards using atlassian components instead of mdui cards?
+
+================================================================================
+
+
+PROMPT #6
+Time: 3/16/2026, 11:39:10 PM
+Model: Claude Opus 4.1
+
+which atlaskit packages do i actually need for forms, buttons, and layout?
+
+================================================================================
+
+
+PROMPT #5
+Time: 3/16/2026, 11:39:01 PM
+Model: Claude Opus 4.1
+
+what is the simplest way to install atlassian design system or atlaskit components?
+
+================================================================================
+
+
+PROMPT #4
+Time: 3/16/2026, 11:38:38 PM
+Model: Claude Opus 4.1
+
+ok if i have to use react, how do i quickly set up a minimal react project for this assignment?
+
+================================================================================
+
+
+PROMPT #3
+Time: 3/16/2026, 11:38:29 PM
+Model: Claude Opus 4.1
+
+do i need react to use atlassian components, or is there a way to use them with plain html?
+
+================================================================================
+
+
+PROMPT #2
+Time: 3/16/2026, 11:38:24 PM
+Model: Claude Opus 4.1
+
+how do i install or use atlassian design system in a basic html project? is it similar to mdui?
+
+================================================================================
+
+
+PROMPT #1
+Time: 3/16/2026, 11:38:13 PM
+Model: Claude Opus 4.1
+
+for the same widget factory project, what atlassian design system components should i use for order, shipping, and summary pages?
+
+================================================================================

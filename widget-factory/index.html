@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en" class="mdui-theme-auto">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Widget Store: Order</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/mdui@2/mdui.css" />
+  <script src="https://unpkg.com/mdui@2/mdui.global.js" defer></script>
+
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+
+  <style>
+    * { box-sizing: border-box; }
+    #content { margin-top: 64px; padding: 16px; padding-bottom: 80px; }
+  </style>
+  <link id="theme-css" rel="stylesheet" href="light.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <mdui-top-app-bar>
+    <mdui-top-app-bar-title>My Widget Store</mdui-top-app-bar-title>
+    <div style="flex-grow: 1;"></div>
+
+    <mdui-button-icon
+      id="themeToggle"
+      icon="dark_mode"
+      aria-label="Toggle dark mode"
+    ></mdui-button-icon>
+
+    <mdui-button-icon
+      icon="shopping_cart"
+      onclick="goToShipping()"
+      aria-label="Shopping cart"
+    ></mdui-button-icon>
+  </mdui-top-app-bar>
+
+  <div id="content">
+    <div class="product-grid">
+      <mdui-card class="product-card" variant="outlined">
+        <div class="product-img-wrap">
+          <img src="images/toyboat.jpg" alt="Toy Boat" />
+        </div>
+
+        <h3>Toy Boat</h3>
+        <div class="price-rating">$15.99 ⭐ 4.6</div>
+
+        <label for="qty-boat">How many?</label>
+        <select name="qty-boat" id="qty-boat">
+          <option value="0">0</option>
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+
+        <label for="color-boat">What color?</label>
+        <select name="color-boat" id="color-boat">
+          <option>Red</option>
+          <option>Blue</option>
+          <option>Yellow</option>
+        </select>
+      </mdui-card>
+
+      <mdui-card class="product-card" variant="outlined">
+        <div class="product-img-wrap">
+          <img src="images/paperplane.jpg" alt="Paper Plane" />
+        </div>
+
+        <h3>Paper Plane</h3>
+        <div class="price-rating">$8.52 ⭐ 3.8</div>
+
+        <label for="qty-plane">How many?</label>
+        <select name="qty-plane" id="qty-plane">
+          <option value="0">0</option>
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+
+        <label for="color-plane">What color?</label>
+        <select name="color-plane" id="color-plane">
+          <option>White</option>
+          <option>Blue</option>
+          <option>Red</option>
+        </select>
+      </mdui-card>
+
+      <mdui-card class="product-card" variant="outlined">
+        <div class="product-img-wrap">
+          <img src="images/stuffedanimal.jpg" alt="Stuffed Animal" />
+        </div>
+
+        <h3>Stuffed Animal</h3>
+        <div class="price-rating">$9.13 ⭐ 4.9</div>
+
+        <label for="qty-stuffed">How many?</label>
+        <select name="qty-stuffed" id="qty-stuffed">
+          <option value="0">0</option>
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+
+        <label for="color-stuffed">What color?</label>
+        <select name="color-stuffed" id="color-stuffed">
+          <option>Brown</option>
+          <option>White</option>
+          <option>Gray</option>
+        </select>
+      </mdui-card>
+
+      <mdui-card class="product-card" variant="outlined">
+        <div class="product-img-wrap">
+          <img src="images/traincar.jpg" alt="Train Car" />
+        </div>
+
+        <h3>Train Car</h3>
+        <div class="price-rating">$25.00 ⭐ 2.4</div>
+
+        <label for="qty-train">How many?</label>
+        <select name="qty-train" id="qty-train">
+          <option value="0">0</option>
+          <option value="1" selected>1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+        </select>
+
+        <label for="color-train">What color?</label>
+        <select name="color-train" id="color-train">
+          <option>Red</option>
+          <option>Blue</option>
+          <option>Green</option>
+        </select>
+      </mdui-card>
+    </div>
+
+    <div class="checkout-row">
+      <mdui-button onclick="goToShipping()">Check Out</mdui-button>
+    </div>
+
+    <footer>
+      "Toy boat" by Jon Olav, "Cruelty to st­ animals?" by Fresh On The Net,
+      "Wooden toy train" by prague.czech.photo, and "JAL Paper Plane" by ayustety
+      are licensed under
+      <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>.
+    </footer>
+  </div>
+
+  <script>
+    function goToShipping() {
+      const order = {
+        toyBoat: {
+          quantity: document.getElementById('qty-boat').value,
+          color: document.getElementById('color-boat').value,
+          price: 15.99
+        },
+        paperPlane: {
+          quantity: document.getElementById('qty-plane').value,
+          color: document.getElementById('color-plane').value,
+          price: 8.52
+        },
+        stuffedAnimal: {
+          quantity: document.getElementById('qty-stuffed').value,
+          color: document.getElementById('color-stuffed').value,
+          price: 9.13
+        },
+        trainCar: {
+          quantity: document.getElementById('qty-train').value,
+          color: document.getElementById('color-train').value,
+          price: 25.0
+        }
+      };
+
+      localStorage.setItem('order', JSON.stringify(order));
+      location.href = 'shipping.html';
+    }
+
+        const html = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+    const themeLink = document.getElementById('theme-css');
+
+    function applyTheme(isDark) {
+      html.classList.remove('mdui-theme-light', 'mdui-theme-dark', 'mdui-theme-auto');
+      html.classList.add(isDark ? 'mdui-theme-dark' : 'mdui-theme-light');
+      themeLink.href = isDark ? 'dark.css' : 'light.css';
+      toggle.icon = isDark ? 'light_mode' : 'dark_mode';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+
+    // On load: check saved preference or OS preference
+    const saved = localStorage.getItem('theme');
+    if (saved) {
+      applyTheme(saved === 'dark');
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark);
+    }
+
+    toggle.addEventListener('click', () => {
+      const isDark = html.classList.contains('mdui-theme-dark');
+      applyTheme(!isDark);
+    });
+  </script>
+  <mdui-navigation-bar id="main-nav" value="store">
+    <mdui-navigation-bar-item icon="storefront" value="store" href="index.html">Store</mdui-navigation-bar-item>
+    <mdui-navigation-bar-item icon="local_shipping" value="shipping" href="shipping.html">Shipping</mdui-navigation-bar-item>
+    <mdui-navigation-bar-item icon="receipt_long" value="summary" href="summary.html">Summary</mdui-navigation-bar-item>
+  </mdui-navigation-bar>
+</body>
+</html>

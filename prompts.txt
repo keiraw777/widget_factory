@@ -1,0 +1,513 @@
+INF133 Assignment 5 - Prompt Log
+Generated: 3/17/2026, 10:01:25 PM
+Total Prompts: 62
+
+================================================================================
+
+
+PROMPT #62
+Time: 3/17/2026, 10:01:13 PM
+Model: Claude Opus 4.1
+
+i’m pretty sure this is the final version now. any last-minute css details i should check before submitting?
+
+================================================================================
+
+PROMPT #61
+Time: 3/17/2026, 10:01:02 PM
+Model: Claude Opus 4.1
+
+how do i make the transitions between light and dark mode feel smoother?
+
+================================================================================
+
+PROMPT #60
+Time: 3/17/2026, 10:00:57 PM
+Model: Claude Opus 4.1
+
+the dark mode works, but it still feels harsher than the light mode. how can i soften it?
+
+================================================================================
+
+PROMPT #59
+Time: 3/17/2026, 10:00:48 PM
+Model: Claude Opus 4.1
+
+can you help me make the summary page look less plain?
+
+================================================================================
+
+PROMPT #58
+Time: 3/17/2026, 10:00:39 PM
+Model: Claude Opus 4.1
+
+want the pages to feel more consistent with each other. what should i check?
+
+================================================================================
+
+PROMPT #57
+Time: 3/17/2026, 10:00:31 PM
+Model: Claude Opus 4.1
+
+the cards are good now, but they still feel a little flat. what css tweaks would help? refer to the documentation here:
+
+================================================================================
+
+PROMPT #56
+Time: 3/17/2026, 10:00:19 PM
+Model: Claude Opus 4.1
+
+can you help me make the buttons feel more finished? the gradient is off
+
+================================================================================
+
+PROMPT #55
+Time: 3/17/2026, 10:00:10 PM
+Model: Claude Opus 4.1
+
+my pages all work now but the css feels kind of messy. how do i organize it better?
+
+================================================================================
+
+PROMPT #54
+Time: 3/17/2026, 10:00:03 PM
+Model: Claude Opus 4.1
+
+i think i’m basically done, but can you help me do final css cleanup so it looks more polished?
+
+================================================================================
+
+PROMPT #53
+Time: 3/17/2026, 9:59:27 PM
+Model: Claude Opus 4.1
+
+can you summarize the final state of the project?
+
+================================================================================
+
+PROMPT #52
+Time: 3/17/2026, 9:59:21 PM
+Model: Claude Opus 4.1
+
+what exact fix should i make?
+
+================================================================================
+
+PROMPT #51
+Time: 3/17/2026, 9:59:15 PM
+Model: Claude Opus 4.1
+
+can you look at all 3 files together and tell me the root cause?
+
+================================================================================
+
+PROMPT #50
+Time: 3/17/2026, 9:55:22 PM
+Model: Claude Opus 4.1
+
+the layer issue happened again, pls see the screenshot attached
+
+================================================================================
+
+PROMPT #49
+Time: 3/16/2026, 11:43:16 PM
+Model: Claude Opus 4.1
+
+the layers are still out of order, pls fix shipping file
+
+================================================================================
+
+PROMPT #48
+Time: 3/16/2026, 11:43:02 PM
+Model: Claude Opus 4.1
+
+pls fix the shipping durations: 
+
+================================================================================
+
+PROMPT #47
+Time: 3/16/2026, 11:42:06 PM
+Model: Claude Opus 4.1
+
+how to get image to wrap?
+
+================================================================================
+
+PROMPT #46
+Time: 3/16/2026, 11:41:55 PM
+Model: Claude Opus 4.1
+
+my images disappeared, says error
+
+================================================================================
+
+PROMPT #45
+Time: 3/16/2026, 11:41:20 PM
+Model: Claude Opus 4.1
+
+here is the documentation again, pls  fix ordering of the order page so the button is at bottom and not hidden
+
+================================================================================
+
+PROMPT #44
+Time: 3/16/2026, 11:40:48 PM
+Model: Claude Opus 4.1
+
+decrease transparency of  it
+
+================================================================================
+
+PROMPT #43
+Time: 3/16/2026, 11:40:34 PM
+Model: Claude Opus 4.1
+
+make it less squished at bottom, maybe extend page further for more room
+
+================================================================================
+
+PROMPT #42
+Time: 3/16/2026, 11:40:17 PM
+Model: Claude Opus 4.1
+
+pls use icons like bag for order / truck for shipping
+
+================================================================================
+
+PROMPT #41
+Time: 3/16/2026, 11:40:05 PM
+Model: Claude Opus 4.1
+
+ok its fixed now. pls help me with implementing the nav progress bar at bottom
+
+================================================================================
+
+PROMPT #40
+Time: 3/16/2026, 11:39:49 PM
+Model: Claude Opus 4.1
+
+the order button is obscured
+
+================================================================================
+
+PROMPT #39
+Time: 3/16/2026, 11:39:43 PM
+Model: Claude Opus 4.1
+
+text is layered and blocking each other, pls help
+
+================================================================================
+
+PROMPT #38
+Time: 3/16/2026, 11:39:28 PM
+Model: Claude Opus 4.1
+
+how to add top bar? make it contrast with existing colors
+
+================================================================================
+
+PROMPT #37
+Time: 3/16/2026, 11:39:10 PM
+Model: Claude Opus 4.1
+
+pls add select menu
+
+================================================================================
+
+PROMPT #36
+Time: 3/16/2026, 11:39:01 PM
+Model: Claude Opus 4.1
+
+how to add text fields mdui
+
+================================================================================
+
+PROMPT #35
+Time: 3/16/2026, 11:38:38 PM
+Model: Claude Opus 4.1
+
+how to add list view mdui
+
+================================================================================
+
+PROMPT #34
+Time: 3/16/2026, 11:38:29 PM
+Model: Claude Opus 4.1
+
+how to change card size
+
+================================================================================
+
+PROMPT #33
+Time: 3/16/2026, 11:38:24 PM
+Model: Claude Opus 4.1
+
+i want to implement mdui cards
+
+================================================================================
+
+PROMPT #32
+Time: 3/16/2026, 11:38:13 PM
+Model: Claude Opus 4.1
+
+pls use a moon icon for the dark mode, and i want a dark green forest pallete, for the light mode, pls use a lime green shade.
+
+================================================================================
+
+PROMPT #31
+Time: 3/16/2026, 11:37:53 PM
+Model: Claude Opus 4.1
+
+how to implement dark mode?
+
+================================================================================
+
+PROMPT #30
+Time: 3/16/2026, 11:37:33 PM
+Model: Claude Opus 4.1
+
+my mdui got messed up, the layering is off
+
+================================================================================
+
+PROMPT #29
+Time: 3/16/2026, 11:37:12 PM
+Model: Claude Opus 4.1
+
+container info html
+
+================================================================================
+
+PROMPT #28
+Time: 3/16/2026, 11:36:01 PM
+Model: Claude Opus 4.1
+
+on mobile, my cards are too squished. how can i fix that?
+
+================================================================================
+
+PROMPT #27
+Time: 3/16/2026, 11:35:48 PM
+Model: Claude Opus 4.1
+
+how do i apply consistent spacing across components (padding, margin system)?
+
+================================================================================
+
+PROMPT #26
+Time: 3/16/2026, 11:35:42 PM
+Model: Claude Opus 4.1
+
+can you fix my font import code? 
+
+================================================================================
+
+PROMPT #25
+Time: 3/16/2026, 11:35:36 PM
+Model: Claude Opus 4.1
+
+my fonts are not loading. what could be wrong?
+
+================================================================================
+
+PROMPT #24
+Time: 3/16/2026, 11:35:29 PM
+Model: Claude Opus 4.1
+
+can you write css for a typography hierarchy using classes like h1, h2, body, etc.???
+
+================================================================================
+
+PROMPT #23
+Time: 3/16/2026, 11:35:20 PM
+Model: Claude Opus 4.1
+
+suggest a typography system with headings, subheadings, and body text.
+
+================================================================================
+
+PROMPT #22
+Time: 3/16/2026, 11:35:11 PM
+Model: Claude Opus 4.1
+
+i want to use font figtree
+
+================================================================================
+
+PROMPT #21
+Time: 3/16/2026, 11:35:02 PM
+Model: Claude Opus 4.1
+
+can you help me import google fonts and apply them to my website?
+
+================================================================================
+
+PROMPT #20
+Time: 3/16/2026, 11:34:55 PM
+Model: Claude Opus 4.1
+
+can you check if this color combination has enough contrast? (background + text)
+
+================================================================================
+
+PROMPT #19
+Time: 3/16/2026, 11:34:47 PM
+Model: Claude Opus 4.1
+
+how do i make sure my text has good contrast for accessibility? (using dark forest green pallete for dark mode)
+
+================================================================================
+
+PROMPT #18
+Time: 3/16/2026, 11:34:29 PM
+Model: Claude Opus 4.1
+
+can you help me replace all hardcoded colors with my css variables?
+
+================================================================================
+
+PROMPT #17
+Time: 3/16/2026, 11:34:21 PM
+Model: Claude Opus 4.1
+
+i defined variables but nothing changed visually. why aren’t my colors applying?
+
+================================================================================
+
+PROMPT #16
+Time: 3/16/2026, 11:34:14 PM
+Model: Claude Opus 4.1
+
+how do i define css variables in :root and use them across my stylesheet? in the css files
+
+================================================================================
+
+PROMPT #15
+Time: 3/16/2026, 11:33:59 PM
+Model: Claude Opus 4.1
+
+can you help me create a color system using css variables? i need at least 5 colors. i like green(forest green, light green potentially?)
+
+================================================================================
+
+PROMPT #14
+Time: 3/16/2026, 11:33:40 PM
+Model: Claude Opus 4.1
+
+can you convert my summary page into a material design table layout?
+
+================================================================================
+
+PROMPT #13
+Time: 3/16/2026, 11:33:31 PM
+Model: Claude Opus 4.1
+
+can you help me style the shipping page form using mdui text fields and radio buttons?
+
+================================================================================
+
+PROMPT #12
+Time: 3/16/2026, 11:33:26 PM
+Model: Claude Opus 4.1
+
+can you improve the spacing between cards and make them look more like a grid layout?
+
+================================================================================
+
+PROMPT #11
+Time: 3/16/2026, 11:33:21 PM
+Model: Claude Opus 4.1
+
+how do i make the layout cleaner using spacing and containers in material design?
+
+================================================================================
+
+PROMPT #10
+Time: 3/16/2026, 11:33:15 PM
+Model: Claude Opus 4.1
+
+can you help me add an mdui top app bar to all pages with the title "widget factory"?
+
+================================================================================
+
+PROMPT #9
+Time: 3/16/2026, 11:33:10 PM
+Model: Claude Opus 4.1
+
+can you convert my color input into an mdui select dropdown instead?
+
+================================================================================
+
+PROMPT #8
+Time: 3/16/2026, 11:32:40 PM
+Model: Claude Opus 4.1
+
+should i use text fields or select menus for color selection in material design?
+
+================================================================================
+
+PROMPT #7
+Time: 3/16/2026, 11:32:34 PM
+Model: Claude Opus 4.1
+
+the inputs look weird and not styled properly. did i use the wrong mdui component?
+
+================================================================================
+
+PROMPT #6
+Time: 3/16/2026, 11:32:29 PM
+Model: Claude Opus 4.1
+
+can you help me convert my quantity input and color input into mdui text fields?
+
+================================================================================
+
+PROMPT #5
+Time: 3/16/2026, 11:32:21 PM
+Model: Claude Opus 4.1
+
+can you show me exactly what script and link tags i need to include for mdui to work?
+
+================================================================================
+
+PROMPT #4
+Time: 3/16/2026, 11:32:08 PM
+Model: Claude Opus 4.1
+
+the mdui styles are not showing up at all. the page looks the same. what could be wrong?
+
+================================================================================
+
+PROMPT #3
+Time: 3/16/2026, 11:31:56 PM
+Model: Claude Opus 4.1
+
+here is part of my index.html. can you convert this widget section into an mdui card component?
+
+================================================================================
+
+PROMPT #2
+Time: 3/16/2026, 11:31:50 PM
+Model: Claude Opus 4.1
+
+how do i install and use mdui in a basic html project?
+
+================================================================================
+
+PROMPT #1
+Time: 3/16/2026, 11:31:07 PM
+Model: Claude Opus 4.1
+
+for my widget factory website (order, shipping, summary pages), what Material Design components would make sense to use?
+
+Response Summary:
+Cards for widgets
+
+Text fields for input
+
+Buttons for actions
+
+Top app bar
+
+Select menus
+
+================================================================================

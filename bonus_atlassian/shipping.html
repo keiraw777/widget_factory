@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" data-color-mode="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Widget Store: Shipping</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/@atlaskit/css-reset@latest" />
+  <link rel="stylesheet" href="https://unpkg.com/@atlaskit/reduced-ui-pack@latest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root,
+    [data-color-mode="light"] {
+      --ds-background-primary:    #FFFFFF;
+      --ds-background-secondary:  #F7F8F9;
+      --ds-background-card:       #FFFFFF;
+      --ds-border:                #091E4224;
+      --ds-border-focused:        #388BFF;
+      --ds-text:                  #172B4D;
+      --ds-text-subtle:           #44546F;
+      --ds-text-disabled:         #8590A2;
+      --ds-link:                  #0C66E4;
+      --ds-brand-bold:            #0C66E4;
+      --ds-brand-bold-hovered:    #0055CC;
+      --ds-brand-bold-pressed:    #003884;
+      --ds-danger:                #CA3521;
+      --ds-danger-bg:             #FFECEB;
+      --ds-shadow-raised:         0 1px 1px #091E4240, 0 0 1px 1px #091E421F;
+      --ds-shadow-overlay:        0 8px 12px #091E4226, 0 0 1px #091E424F;
+      --ds-nav-bg:                #0C66E4;
+      --ds-nav-text:              #FFFFFF;
+      --ds-nav-text-subtle:       rgba(255,255,255,0.7);
+      --ds-nav-hover:             rgba(255,255,255,0.15);
+      --ds-nav-active:            rgba(255,255,255,0.25);
+      --ds-radio-selected:        #0C66E4;
+      --ds-radio-border:          #44546F;
+    }
+
+    [data-color-mode="dark"] {
+      --ds-background-primary:    #1D2125;
+      --ds-background-secondary:  #161A1D;
+      --ds-background-card:       #22272B;
+      --ds-border:                #A6C5E229;
+      --ds-border-focused:        #388BFF;
+      --ds-text:                  #C7D1DB;
+      --ds-text-subtle:           #8C9BAB;
+      --ds-text-disabled:         #626F86;
+      --ds-link:                  #579DFF;
+      --ds-brand-bold:            #579DFF;
+      --ds-brand-bold-hovered:    #85B8FF;
+      --ds-brand-bold-pressed:    #CCE0FF;
+      --ds-danger:                #F87168;
+      --ds-danger-bg:             #42221F;
+      --ds-shadow-raised:         0 1px 1px #03040480, 0 0 1px 1px #03040466;
+      --ds-shadow-overlay:        0 8px 12px #03040480, 0 0 1px #0304047A;
+      --ds-nav-bg:                #1C2B41;
+      --ds-nav-text:              #C7D1DB;
+      --ds-nav-text-subtle:       rgba(199,209,219,0.7);
+      --ds-nav-hover:             rgba(166,197,226,0.12);
+      --ds-nav-active:            rgba(166,197,226,0.2);
+      --ds-radio-selected:        #579DFF;
+      --ds-radio-border:          #8C9BAB;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      background: var(--ds-background-secondary);
+      color: var(--ds-text);
+      margin: 0;
+      min-height: 100vh;
+    }
+
+    /* ── Top Nav ── */
+    .atl-nav {
+      background: var(--ds-nav-bg);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 16px;
+      gap: 8px;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      box-shadow: var(--ds-shadow-raised);
+    }
+    .atl-nav-logo {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--ds-nav-text); font-weight: 700; font-size: 16px;
+      text-decoration: none; margin-right: 8px;
+    }
+    .atl-nav-links { display: flex; align-items: center; gap: 2px; flex: 1; }
+    .atl-nav-link {
+      color: var(--ds-nav-text-subtle); text-decoration: none;
+      padding: 6px 12px; border-radius: 3px; font-size: 14px; font-weight: 500;
+      transition: background 0.15s, color 0.15s;
+    }
+    .atl-nav-link:hover { background: var(--ds-nav-hover); color: var(--ds-nav-text); }
+    .atl-nav-link.active { background: var(--ds-nav-active); color: var(--ds-nav-text); }
+    .atl-nav-right { display: flex; align-items: center; gap: 8px; }
+    .atl-icon-btn {
+      background: transparent; border: none; color: var(--ds-nav-text);
+      cursor: pointer; width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.15s; font-size: 18px;
+    }
+    .atl-icon-btn:hover { background: var(--ds-nav-hover); }
+
+    /* ── Layout ── */
+    #content {
+      margin-top: 56px;
+      padding: 24px 20px 80px;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ── Page header ── */
+    .page-header { margin-bottom: 24px; }
+    .page-header h1 { font-size: 24px; font-weight: 600; color: var(--ds-text); margin: 0 0 4px; }
+    .page-header p { color: var(--ds-text-subtle); margin: 0; font-size: 14px; }
+
+    /* ── Section card ── */
+    .atl-card {
+      background: var(--ds-background-card);
+      border: 1px solid var(--ds-border);
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: var(--ds-shadow-raised);
+      margin-bottom: 16px;
+    }
+    .atl-card-title {
+      font-size: 16px; font-weight: 600; color: var(--ds-text);
+      margin: 0 0 16px; padding-bottom: 12px;
+      border-bottom: 1px solid var(--ds-border);
+    }
+
+    /* ── Field group ── */
+    .field-group { display: flex; flex-direction: column; gap: 14px; }
+    .field-row { display: flex; flex-direction: column; gap: 4px; }
+    .field-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    .atl-label {
+      display: block; font-size: 12px; font-weight: 600;
+      color: var(--ds-text-subtle); margin-bottom: 4px;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .atl-label .required { color: var(--ds-danger); margin-left: 2px; }
+
+    /* ── Text inputs ── */
+    .atl-input {
+      width: 100%; padding: 8px 10px; font-size: 14px;
+      font-family: inherit;
+      border: 2px solid var(--ds-border); border-radius: 3px;
+      background: var(--ds-background-card); color: var(--ds-text);
+      transition: border-color 0.15s;
+    }
+    .atl-input:focus {
+      outline: none; border-color: var(--ds-border-focused);
+      box-shadow: 0 0 0 2px rgba(56,139,255,0.2);
+    }
+    .atl-input::placeholder { color: var(--ds-text-disabled); }
+    .atl-input-helper { font-size: 11px; color: var(--ds-text-subtle); margin-top: 3px; }
+
+    /* ── Radio shipping options ── */
+    .shipping-options { display: flex; flex-direction: column; gap: 10px; }
+    .shipping-option {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 14px; border: 2px solid var(--ds-border);
+      border-radius: 6px; cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      background: var(--ds-background-card);
+    }
+    .shipping-option:hover { border-color: var(--ds-brand-bold); background: var(--ds-background-secondary); }
+    .shipping-option input[type="radio"] { margin-top: 2px; accent-color: var(--ds-radio-selected); flex-shrink: 0; }
+    .shipping-option input[type="radio"]:checked ~ .shipping-option-body { color: var(--ds-text); }
+    .shipping-option:has(input:checked) { border-color: var(--ds-brand-bold); background: #E9F2FF; }
+    [data-color-mode="dark"] .shipping-option:has(input:checked) { background: #1C2B41; }
+
+    .shipping-option-body { display: flex; flex-direction: column; gap: 2px; }
+    .shipping-option-name { font-weight: 600; font-size: 14px; color: var(--ds-text); }
+    .shipping-option-detail { font-size: 12px; color: var(--ds-text-subtle); }
+    .shipping-option-price { font-weight: 700; color: var(--ds-brand-bold); font-size: 14px; }
+
+    /* ── Buttons ── */
+    .atl-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 6px; padding: 8px 16px; border-radius: 3px;
+      font-size: 14px; font-weight: 500; font-family: inherit;
+      cursor: pointer; border: none;
+      transition: background 0.15s;
+      text-decoration: none;
+    }
+    .atl-btn-primary { background: var(--ds-brand-bold); color: #FFFFFF; }
+    .atl-btn-primary:hover { background: var(--ds-brand-bold-hovered); }
+    .atl-btn-primary:active { background: var(--ds-brand-bold-pressed); }
+    .atl-btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+    .atl-btn-subtle {
+      background: transparent; color: var(--ds-link);
+      border: 1px solid var(--ds-border);
+    }
+    .atl-btn-subtle:hover { background: var(--ds-background-secondary); }
+
+    .actions-row {
+      display: flex; justify-content: flex-end; gap: 10px;
+      margin-top: 8px;
+    }
+
+    /* ── Loading spinner ── */
+    .spinner {
+      display: inline-block; width: 14px; height: 14px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white; border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Bottom nav ── */
+    .atl-bottom-nav {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--ds-background-card);
+      border-top: 1px solid var(--ds-border);
+      display: flex; z-index: 100;
+    }
+    .atl-bottom-nav-item {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 8px 4px; text-decoration: none;
+      color: var(--ds-text-subtle); font-size: 11px; font-weight: 500;
+      gap: 3px; transition: color 0.15s, background 0.15s;
+    }
+    .atl-bottom-nav-item:hover { color: var(--ds-brand-bold); background: var(--ds-background-secondary); }
+    .atl-bottom-nav-item.active { color: var(--ds-brand-bold); }
+    .atl-bottom-nav-item svg { width: 20px; height: 20px; }
+
+    @media (max-width: 600px) {
+      #content { padding: 16px 12px 80px; }
+      .field-row-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Top Nav ── -->
+  <nav class="atl-nav">
+    <button class="atl-icon-btn" onclick="location.href='index.html'" aria-label="Go back" title="Back to store">◀</button>
+    <a class="atl-nav-logo" href="index.html">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8.56 13.87c-.24-.32-.68-.26-.9.08l-3.5 5.73A.67.67 0 0 0 4.73 21h6.02a.66.66 0 0 0 .59-.38c.75-1.63.52-3.83-1.78-6.75z" fill="white"/><path d="M11.67 3.28a14.93 14.93 0 0 0-.97 14.24l2.56 5.1c.12.24.37.38.63.38h6.02a.67.67 0 0 0 .57-1.02L12.6 3.27a.52.52 0 0 0-.93.01z" fill="white"/></svg>
+      My Widget Store
+    </a>
+    <div class="atl-nav-links">
+      <a class="atl-nav-link" href="index.html">Store</a>
+      <a class="atl-nav-link active" href="shipping.html">Shipping</a>
+      <a class="atl-nav-link" href="summary.html">Summary</a>
+    </div>
+    <div class="atl-nav-right">
+      <button class="atl-icon-btn" id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    </div>
+  </nav>
+
+  <!-- ── Content ── -->
+  <div id="content">
+    <div class="page-header">
+      <h1>Shipping Details</h1>
+      <p>Enter your delivery address and choose a shipping speed.</p>
+    </div>
+
+    <!-- Address card -->
+    <div class="atl-card">
+      <div class="atl-card-title">📍 Delivery Address</div>
+      <div class="field-group">
+        <div class="field-row">
+          <label class="atl-label" for="street">Street Address <span class="required">*</span></label>
+          <input class="atl-input" type="text" id="street" placeholder="123 Main St" autocomplete="street-address" />
+        </div>
+        <div class="field-row">
+          <label class="atl-label" for="city">City <span class="required">*</span></label>
+          <input class="atl-input" type="text" id="city" placeholder="San Francisco" autocomplete="address-level2" />
+        </div>
+        <div class="field-row-2">
+          <div class="field-row">
+            <label class="atl-label" for="state">State <span class="required">*</span></label>
+            <input class="atl-input" type="text" id="state" placeholder="CA" maxlength="2" autocomplete="address-level1" />
+          </div>
+          <div class="field-row">
+            <label class="atl-label" for="zip">ZIP Code <span class="required">*</span></label>
+            <input class="atl-input" type="text" id="zip" placeholder="94103" maxlength="5" autocomplete="postal-code" />
+            <div class="atl-input-helper">5-digit US ZIP</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shipping speed card -->
+    <div class="atl-card">
+      <div class="atl-card-title">🚚 Shipping Speed</div>
+      <div class="shipping-options">
+
+        <label class="shipping-option">
+          <input type="radio" name="shipping" value="Express" data-cost="15.99" data-days="1" />
+          <div class="shipping-option-body">
+            <span class="shipping-option-name">Express Shipping</span>
+            <span class="shipping-option-detail">Arrives in 1 business day</span>
+            <span class="shipping-option-price">$15.99</span>
+          </div>
+        </label>
+
+        <label class="shipping-option">
+          <input type="radio" name="shipping" value="Standard" data-cost="3.99" data-days="5" checked />
+          <div class="shipping-option-body">
+            <span class="shipping-option-name">Standard Shipping</span>
+            <span class="shipping-option-detail">Arrives in 5 business days</span>
+            <span class="shipping-option-price">$3.99</span>
+          </div>
+        </label>
+
+        <label class="shipping-option">
+          <input type="radio" name="shipping" value="Slow" data-cost="0.99" data-days="10" />
+          <div class="shipping-option-body">
+            <span class="shipping-option-name">Slow Shipping</span>
+            <span class="shipping-option-detail">Arrives in 10 business days</span>
+            <span class="shipping-option-price">$0.99</span>
+          </div>
+        </label>
+
+      </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="actions-row">
+      <a class="atl-btn atl-btn-subtle" href="index.html">Cancel</a>
+      <button class="atl-btn atl-btn-primary" id="placeOrderBtn" onclick="placeOrder()">
+        Place Order
+      </button>
+    </div>
+  </div>
+
+  <!-- ── Bottom Nav ── -->
+  <nav class="atl-bottom-nav">
+    <a class="atl-bottom-nav-item" href="index.html">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      Store
+    </a>
+    <a class="atl-bottom-nav-item active" href="shipping.html">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+      Shipping
+    </a>
+    <a class="atl-bottom-nav-item" href="summary.html">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+      Summary
+    </a>
+  </nav>
+
+  <script>
+    function placeOrder() {
+      const street = document.getElementById('street').value.trim();
+      const city   = document.getElementById('city').value.trim();
+      const state  = document.getElementById('state').value.trim();
+      const zip    = document.getElementById('zip').value.trim();
+      const sel    = document.querySelector('input[name="shipping"]:checked');
+
+      if (!street || !city || !state || !zip) {
+        alert('Please fill out all shipping fields.');
+        return;
+      }
+
+      const shippingInfo = {
+        street, city, state, zip,
+        method: sel.value,
+        cost:   Number(sel.dataset.cost),
+        days:   Number(sel.dataset.days)
+      };
+      localStorage.setItem('shippingInfo', JSON.stringify(shippingInfo));
+
+      const btn = document.getElementById('placeOrderBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> Placing order…';
+
+      setTimeout(() => { location.href = 'summary.html'; }, 800);
+    }
+
+    /* ── Dark mode ── */
+    const html = document.documentElement;
+    const toggle = document.getElementById('themeToggle');
+
+    function applyTheme(isDark) {
+      html.setAttribute('data-color-mode', isDark ? 'dark' : 'light');
+      toggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('atl-theme', isDark ? 'dark' : 'light');
+    }
+
+    const saved = localStorage.getItem('atl-theme');
+    if (saved) { applyTheme(saved === 'dark'); }
+    else { applyTheme(window.matchMedia('(prefers-color-scheme: dark)').matches); }
+
+    toggle.addEventListener('click', () => {
+      applyTheme(html.getAttribute('data-color-mode') !== 'dark');
+    });
+  </script>
+</body>
+</html>

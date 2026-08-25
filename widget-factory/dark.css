@@ -1,0 +1,42 @@
+
+:root {
+  /* Primary: main brand green (buttons, links, accents) */
+  --color-primary:            #64be82;
+  --color-on-primary:         #0a2e18;
+  --color-primary-container:  #1e4a31;
+  --color-on-primary-container: #c8f5d8;
+
+  /* Secondary: muted sage (subheadings, borders, chips) */
+  --color-secondary:          #a0c8b0;
+  --color-on-secondary:       #0a2e18;
+  --color-secondary-container: #1e4132;
+  --color-on-secondary-container: #c0e8d0;
+
+  /* Tertiary: warm accent (highlights, hover states) */
+  --color-tertiary:           #80c898;
+  --color-on-tertiary:        #0a2e18;
+  --color-tertiary-container: #173525;
+  --color-on-tertiary-container: #b8f0d0;
+
+  /* Background: page background */
+  --color-background:         #0f2819;
+  --color-on-background:      #dcf5e6;
+
+  /* Surface: cards, panels, inputs */
+  --color-surface:            #1e412d;
+  --color-on-surface:         #dcf5e6;
+  --color-surface-variant:    #264d38;
+  --color-on-surface-variant: #a0c8b0;
+
+  /* Outline: borders */
+  --color-outline:            #507864;
+  --color-outline-variant:    #3a5e4a;
+
+  /* Top app bar */
+  --color-top-bar:            #173525;
+  --color-top-bar-rgb:         23, 53, 37;
+  --color-on-top-bar:         #dcf5e6;
+
+  /* Muted text (footer, captions) */
+  --color-muted:              #80aa90;
+}
